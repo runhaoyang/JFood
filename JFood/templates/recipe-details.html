@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<br><br><br><br><br>
+
+<div class="container">
+    {% if user.is_authenticated %}
+    {% if user.id == recipe.author.id or user.id == 1 %}
+
+        <a href = "{% url 'updaterecipe' recipe.pk %}">
+            <button class="btn btn-success">Update Recipe</button>
+        </a>
+
+{% endif %}
+{% endif %}
+
+    <div class="row justify-content-md-center">
+        <div>
+        <br>
+            <h1> {{recipe.name}}</li></h1>
+            <li> Submitted by: {{recipe.author}}</li>
+        </div>
+        <div class="col-md-auto">
+     
+            <img src="{{recipe.img.url}}" alt="" width = "500" height = "300">
+        </div>
+        <div class="row">
+            <div class="col">
+            <br>
+            <h3>Cooking Directions: </h3>
+            <p> {{recipe.cookingDirections |linebreaks }} </p>
+        </div>
+        <div class="col-md-auto">
+
+            
+        </div>
+        <div class="col col-lg-2">
+            <br>
+            <h3>Ingredients: </h3>
+            <li>{{recipe.ingredients |linebreaks }}</li> 
+        </div>
+        </div>
+        </div>
+        <br><br>
+        <div class="container">
+            <div class="row">
+              <div class="col"> <h3><a href="{% url 'index' %}">Home</a></h3></div>
+              <div class="col">  <h3><a href="{% url 'recipes' %}"">View all recipes</a></h3>
+            </div>
+              
+            </div>
+        </div>  
+        </div>
+        
+{% endblock content %}
+

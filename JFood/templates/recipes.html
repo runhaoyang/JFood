@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="recepie_area">
+    <div class="container">
+        <h1 style = "text-align: center;"> All Recipes </h1><br>
+        <div class="row">
+            {% for dest in dests %}
+            <div class="col-xl-4 col-lg-4 col-md-6">
+                <div class="single_recepie text-center">
+                    <div class="recepie_thumb">
+                        <img src="{{dest.img.url}}" alt="" height = "200" width = "150">
+                    </div>
+                    <h3>{{dest.name}}</h3>
+                    <a href="{% url 'recipe-detail' dest.pk %}" class="line_btn">View Recipe</a>
+                </div>
+            </div>
+            {% endfor %}
+     
+    </div>
+</div>
+
+
+{% endblock content %}
+
